@@ -31,6 +31,9 @@ public class ShowGroundEffectsSettings : ISettings
     [Menu("Physical damage", parentIndex = 100)]
     public ColorNode PhysicalColor { get; set; } = new ColorNode(WithAlpha60(Color.Brown));
 
+    [Menu("Ground size multiplier", parentIndex = 100)]
+    public RangeNode<float> GroundSizeMultiplier { get; set; } = new RangeNode<float>(1f, 0.1f, 5f);
+
     [Menu("Debug mode (shows encountered ground effects)")]
     public ToggleNode DebugMode { get; set; } = new ToggleNode(false);
 

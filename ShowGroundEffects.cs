@@ -99,12 +99,13 @@ public class ShowGroundEffects : BaseSettingsPlugin<ShowGroundEffectsSettings>
         ImGui.Text("Custom Effect Patterns:");
         ImGui.Spacing();
 
-        if (ImGui.BeginTable("##patternTable", 5, ImGuiTableFlags.RowBg))
+        if (ImGui.BeginTable("##patternTable", 6, ImGuiTableFlags.RowBg))
         {
             ImGui.TableSetupColumn("On", ImGuiTableColumnFlags.WidthFixed, 24);
-            ImGui.TableSetupColumn("Pattern", ImGuiTableColumnFlags.WidthStretch, 0.5f);
-            ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthStretch, 0.3f);
-            ImGui.TableSetupColumn("Color", ImGuiTableColumnFlags.WidthFixed, 120);
+            ImGui.TableSetupColumn("Pattern", ImGuiTableColumnFlags.WidthStretch, 0.45f);
+            ImGui.TableSetupColumn("Name", ImGuiTableColumnFlags.WidthStretch, 0.25f);
+            ImGui.TableSetupColumn("Color", ImGuiTableColumnFlags.WidthFixed, 110);
+            ImGui.TableSetupColumn("Size", ImGuiTableColumnFlags.WidthFixed, 64);
             ImGui.TableSetupColumn("", ImGuiTableColumnFlags.WidthFixed, 70);
             ImGui.TableHeadersRow();
 
@@ -143,6 +144,14 @@ public class ShowGroundEffects : BaseSettingsPlugin<ShowGroundEffectsSettings>
                 if (ImGui.ColorEdit4("##color", ref color, ImGuiColorEditFlags.NoInputs | ImGuiColorEditFlags.AlphaBar))
                 {
                     pattern.Color.Value = new Color((byte)(color.X * 255), (byte)(color.Y * 255), (byte)(color.Z * 255), (byte)(color.W * 255));
+                }
+
+                ImGui.TableNextColumn();
+                ImGui.SetNextItemWidth(-1);
+                var size = pattern.SizeMultiplier.Value;
+                if (ImGui.DragFloat("##size", ref size, 0.05f, pattern.SizeMultiplier.Min, pattern.SizeMultiplier.Max, "%.1f"))
+                {
+                    pattern.SizeMultiplier.Value = size;
                 }
 
                 ImGui.TableNextColumn();
@@ -249,7 +258,7 @@ public class ShowGroundEffects : BaseSettingsPlugin<ShowGroundEffectsSettings>
             {
                 DrawFilledCircleInWorldPosition(
                     GameController.IngameState.Data.ToWorldWithTerrainHeight(positioned.GridPosition),
-                    positioned.Size, 1, drawColor);
+                    positioned.Size * Settings.GroundSizeMultiplier.Value, 1, drawColor);
             }
         }
     }
@@ -277,7 +286,7 @@ public class ShowGroundEffects : BaseSettingsPlugin<ShowGroundEffectsSettings>
             {
                 DrawFilledCircleInWorldPosition(
                     GameController.IngameState.Data.ToWorldWithTerrainHeight(positioned.GridPosition),
-                    positioned.Size, 1, matchingPattern.Color);
+                    positioned.Size * matchingPattern.SizeMultiplier.Value, 1, matchingPattern.Color);
             }
         }
     }

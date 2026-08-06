@@ -11,6 +11,7 @@ public class CustomEffectPattern
     public TextNode Pattern { get; set; } = new TextNode("");
     public TextNode DisplayName { get; set; } = new TextNode("");
     public ColorNode Color { get; set; } = new ColorNode(new Color(255, 0, 0, 60));
+    public RangeNode<float> SizeMultiplier { get; set; } = new RangeNode<float>(1f, 0.1f, 5f);
 
     public CustomEffectPattern() { }
 
