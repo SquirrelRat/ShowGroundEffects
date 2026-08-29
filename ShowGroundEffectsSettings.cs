@@ -13,22 +13,37 @@ public class ShowGroundEffectsSettings : ISettings
     [Menu("Render distance")]
     public RangeNode<int> RenderDistance { get; set; } = new RangeNode<int>(80, 0, 200);
 
-    [Menu("If you want to hide an element, set the color transparency to max", 100)]
+    [Menu("Use the visibility toggles to hide damage types; transparency only changes appearance", 100)]
     public EmptyNode Description { get; set; }
 
     [Menu("Fire damage", parentIndex = 100)]
+    public ToggleNode ShowFireDamage { get; set; } = new ToggleNode(true);
+
+    [Menu("Fire color", parentIndex = 100)]
     public ColorNode FireColor { get; set; } = new ColorNode(WithAlpha60(Color.Red));
 
     [Menu("Cold damage", parentIndex = 100)]
+    public ToggleNode ShowColdDamage { get; set; } = new ToggleNode(true);
+
+    [Menu("Cold color", parentIndex = 100)]
     public ColorNode ColdColor { get; set; } = new ColorNode(WithAlpha60(Color.Blue));
 
     [Menu("Lightning damage", parentIndex = 100)]
+    public ToggleNode ShowLightningDamage { get; set; } = new ToggleNode(true);
+
+    [Menu("Lightning color", parentIndex = 100)]
     public ColorNode LightningColor { get; set; } = new ColorNode(WithAlpha60(Color.Yellow));
 
     [Menu("Chaos damage", parentIndex = 100)]
+    public ToggleNode ShowChaosDamage { get; set; } = new ToggleNode(true);
+
+    [Menu("Chaos color", parentIndex = 100)]
     public ColorNode ChaosColor { get; set; } = new ColorNode(WithAlpha60(Color.Purple));
 
     [Menu("Physical damage", parentIndex = 100)]
+    public ToggleNode ShowPhysicalDamage { get; set; } = new ToggleNode(true);
+
+    [Menu("Physical color", parentIndex = 100)]
     public ColorNode PhysicalColor { get; set; } = new ColorNode(WithAlpha60(Color.Brown));
 
     [Menu("Ground size multiplier", parentIndex = 100)]
@@ -36,6 +51,9 @@ public class ShowGroundEffectsSettings : ISettings
 
     [Menu("Debug mode (shows encountered ground effects)")]
     public ToggleNode DebugMode { get; set; } = new ToggleNode(false);
+
+    [Menu("Show Exarch daemon hazards", 150)]
+    public ToggleNode ShowExarchDaemons { get; set; } = new ToggleNode(true);
 
     [Menu("Enable Custom Effect Detection", 200)]
     public ToggleNode EnableCustomEffects { get; set; } = new ToggleNode(true);

@@ -35,10 +35,12 @@ The built-in defaults are candidates for common encounters (Sirus, Maven, Shaper
 | --- | --- |
 | Enable | Master toggle. |
 | Render distance | Maximum distance at which effects are drawn. |
-| Fire / Cold / Lightning / Chaos / Physical damage | Colors used for degen ground of each type. Set alpha to 0 to hide a type. |
+| Show Fire / Cold / Lightning / Chaos / Physical damage | Explicit visibility toggles for each degen ground type. |
+| Fire / Cold / Lightning / Chaos / Physical color | Colors used for degen ground of each type. Alpha controls opacity. |
+| Show Exarch daemon hazards | Toggles the Exarch daemon hazard circles. |
 | Debug mode | Shows the buff names of unmatched ground effects. |
 | Enable Custom Effect Detection | Master toggle for the custom pattern feature. |
-| Custom Effect Patterns | The pattern table: enable flag, path substring, display name, color, remove. |
+| Custom Effect Patterns | The pattern table: enable flag, path substring, display name, color, size, remove. |
 
 ## Building
 
