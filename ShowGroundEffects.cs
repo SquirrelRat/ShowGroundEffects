@@ -162,7 +162,7 @@ public class ShowGroundEffects : BaseSettingsPlugin<ShowGroundEffectsSettings>
 
     private void DrawStatusCard(string title, string value, Color color, float width)
     {
-        ImGui.BeginChild($"##card_{title}", new Vector2(width, 58f), ImGuiChildFlags.Border, ImGuiWindowFlags.NoScrollbar);
+        ImGui.BeginChild($"##card_{title}", new Vector2(width, 58f), ImGuiChildFlags.Borders, ImGuiWindowFlags.NoScrollbar);
         ImGui.PushStyleColor(ImGuiCol.Text, ToImGuiColor(color));
         ImGui.Text(title);
         ImGui.PopStyleColor();
